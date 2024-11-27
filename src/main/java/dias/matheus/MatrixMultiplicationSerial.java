@@ -2,7 +2,11 @@ package dias.matheus;
 
 import java.util.Random;
 import java.util.Scanner;
-
+/*
+ *
+ * "
+A multiplicação de matrizes é feita por meio de um algoritmo que exige bastante atenção. Para que exista o produto entre a matriz A e a matriz B, é necessário que o número de colunas da primeira matriz, no caso A, seja igual ao número de linhas da segunda matriz, no caso B."
+ * */
 public class MatrixMultiplicationSerial {
 
     public static void main(String[] args) throws InterruptedException {

@@ -1,0 +1,23 @@
+public class SpeedUpChart {
+	public static void main(String[] args) {
+		int[] threads = {1,2};
+
+		double[] tempos = {1000, 2000};
+
+		double tempoSerial = tempos[0];
+		double speedUp = new Double[tempos.length];
+
+		for(int i = 0; i < tempos.length; i++)
+		{
+			speedUp[i] tempoSerial / tempos[i];
+		}
+
+		DefaultCategoryDataset dataset = new DefaultCategoryDataset();
+
+		for(int i = 0; i < threads.length; i++)
+		{
+			dataset.addValue(speedUp[i], "speed-up", threads[i] + "Threads");
+		}
+	}
+
+}
