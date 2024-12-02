@@ -5,7 +5,9 @@ import java.util.Scanner;
 /*
  *
  * "
-A multiplicação de matrizes é feita por meio de um algoritmo que exige bastante atenção. Para que exista o produto entre a matriz A e a matriz B, é necessário que o número de colunas da primeira matriz, no caso A, seja igual ao número de linhas da segunda matriz, no caso B."
+A multiplicação de matrizes.
+*  Para que exista o produto entre a matriz A e a matriz B, é necessário que o número de
+* colunas da primeira matriz, no caso A, seja igual ao número de linhas da segunda matriz, no caso B."
  * */
 public class MatrixMultiplicationSerial {
 
@@ -19,6 +21,7 @@ public class MatrixMultiplicationSerial {
         double[][] result = new double[Tam][Tam];
 
         long startTime = System.currentTimeMillis();
+        //Script de soma da matriz
         for (int i = 0; i < Tam; i++) {
             for (int j = 0; j < Tam; j++) {
                 for (int k = 0; k < Tam; k++) {
@@ -28,7 +31,7 @@ public class MatrixMultiplicationSerial {
         }
 
         long endTime = System.currentTimeMillis();
-        System.out.println("Tempo de execução (Serial): " + (endTime - startTime) + " ms");
+        System.out.println("Tempo de execução (Serial): " + (endTime - startTime) / 1000 + " s");
     }
 
 

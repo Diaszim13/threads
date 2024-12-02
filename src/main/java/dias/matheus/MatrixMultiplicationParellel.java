@@ -9,41 +9,41 @@ public class MatrixMultiplicationParellel {
 
     Scanner sc = new Scanner(System.in);
 
-        System.out.println("Escreva o tamanho da matriz");
+    System.out.println("Escreva o tamanho da matriz");
     int Tam = sc.nextInt();
     double[][] matrixA = generateMatrix(Tam);
     double[][] matrixB = generateMatrix(Tam);
     double[][] result = new double[Tam][Tam];
     long startTime = System.currentTimeMillis();
 
-    int numThreads = 4;
+    int numThreads = 8;
     Thread[] threads = new Thread[numThreads];
 
     int rowsPerThread = Tam / numThreads;
 
         for(int t = 0; t < numThreads; t++)
-    {
-        final int startRow = t * rowsPerThread;
-        final int endRow = (t == numThreads - 1) ? Tam : startRow + rowsPerThread;
+        {
+            final int startRow = t * rowsPerThread;
+            final int endRow = (t == numThreads - 1) ? Tam : startRow + rowsPerThread;
 
-        threads[t] = new Thread(() -> {
-            for (int i = startRow; i < endRow; i++) {
-                for (int j = 0; j < Tam; j++) {
-                    for (int k = 0; k < Tam; k++) {
-                        result[i][j] += matrixA[i][k] * matrixB[k][j];
+            threads[t] = new Thread(() -> {
+                for (int i = startRow; i < endRow; i++) {
+                    for (int j = 0; j < Tam; j++) {
+                        for (int k = 0; k < Tam; k++) {
+                            result[i][j] += matrixA[i][k] * matrixB[k][j];
+                        }
                     }
                 }
-            }
-        });
+            });
 
-        threads[t].start();
-    }
-        for (Thread thread : threads) {
-        thread.join();
-    }
+            threads[t].start();
+        }
+            for (Thread thread : threads) {
+            thread.join();
+        }
 
     long endTime = System.currentTimeMillis();
-        System.out.println("Tempo de execução (Paralelo): " + (endTime - startTime) + " ms");
+        System.out.println("Tempo de execução (Paralelo): " + (endTime - startTime) / 1000 + " s");
 
     }
 
